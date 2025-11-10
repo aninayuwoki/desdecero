@@ -17,12 +17,12 @@ if ($userData === false) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $us_c_dula = $_POST['us_c_dula'] ?? '';
-    $us_apellidos = $_POST['us_apellidos'] ?? '';
-    $us_nombres = $_POST['us_nombres'] ?? '';
+    $us_apellido = $_POST['us_apellido'] ?? '';
+    $us_nombre = $_POST['us_nombre'] ?? '';
     $us_celular = $_POST['us_celular'] ?? '';
     $us_correo = $_POST['us_correo'] ?? '';
 
-    if ($user->update($id, $us_c_dula, $us_apellidos, $us_nombres, $us_celular, $us_correo)) {
+    if ($user->update($id, $us_c_dula, $us_apellido, $us_nombre, $us_celular, $us_correo)) {
         header('Location: users.php');
         exit;
     } else {
@@ -46,11 +46,11 @@ include '../templates/header.php';
     </div>
     <div style="margin-bottom: 10px;">
         <label>Apellidos:</label><br>
-        <input type="text" name="us_apellidos" value="<?php echo htmlspecialchars($userData['us_apellidos']); ?>" required>
+        <input type="text" name="us_apellido" value="<?php echo htmlspecialchars($userData['us_apellido']); ?>" required>
     </div>
     <div style="margin-bottom: 10px;">
         <label>Nombres:</label><br>
-        <input type="text" name="us_nombres" value="<?php echo htmlspecialchars($userData['us_nombres']); ?>" required>
+        <input type="text" name="us_nombre" value="<?php echo htmlspecialchars($userData['us_nombre']); ?>" required>
     </div>
     <div style="margin-bottom: 10px;">
         <label>Celular:</label><br>

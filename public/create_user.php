@@ -6,17 +6,17 @@ $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $us_c_dula = $_POST['us_c_dula'] ?? '';
-    $us_apellidos = $_POST['us_apellidos'] ?? '';
-    $us_nombres = $_POST['us_nombres'] ?? '';
+    $us_apellido = $_POST['us_apellido'] ?? '';
+    $us_nombre = $_POST['us_nombre'] ?? '';
     $us_celular = $_POST['us_celular'] ?? '';
     $us_correo = $_POST['us_correo'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if (empty($us_c_dula) || empty($us_apellidos) || empty($us_nombres) || empty($us_correo) || empty($password)) {
+    if (empty($us_c_dula) || empty($us_apellido) || empty($us_nombre) || empty($us_correo) || empty($password)) {
         $error = 'Please fill in all required fields.';
     } else {
         $user = new User();
-        if ($user->create($us_c_dula, $us_apellidos, $us_nombres, $us_celular, $us_correo, $password)) {
+        if ($user->create($us_c_dula, $us_apellido, $us_nombre, $us_celular, $us_correo, $password)) {
             header('Location: users.php');
             exit;
         } else {
@@ -41,11 +41,11 @@ include '../templates/header.php';
     </div>
     <div style="margin-bottom: 10px;">
         <label>Apellidos:</label><br>
-        <input type="text" name="us_apellidos" required>
+        <input type="text" name="us_apellido" required>
     </div>
     <div style="margin-bottom: 10px;">
         <label>Nombres:</label><br>
-        <input type="text" name="us_nombres" required>
+        <input type="text" name="us_nombre" required>
     </div>
     <div style="margin-bottom: 10px;">
         <label>Celular:</label><br>
