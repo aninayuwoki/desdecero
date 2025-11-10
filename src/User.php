@@ -1,5 +1,7 @@
 <?php
 
+echo "DEBUG: Running User.php version 2.0";
+
 require_once 'Database.php';
 
 class User {
