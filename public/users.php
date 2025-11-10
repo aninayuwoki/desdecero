@@ -26,7 +26,7 @@ $users = $user->readAll();
         <?php foreach ($users as $u): ?>
             <tr>
                 <td><?php echo htmlspecialchars($u['us_id']); ?></td>
-                <td><?php echo htmlspecialchars($u['us_cedula']); ?></td>
+                <td><?php echo htmlspecialchars($u['us_c_dula']); ?></td>
                 <td><?php echo htmlspecialchars($u['us_apellidos']); ?></td>
                 <td><?php echo htmlspecialchars($u['us_nombres']); ?></td>
                 <td><?php echo htmlspecialchars($u['us_celular']); ?></td>

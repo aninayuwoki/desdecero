@@ -5,18 +5,18 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $us_cedula = $_POST['us_cedula'] ?? '';
+    $us_c_dula = $_POST['us_c_dula'] ?? '';
     $us_apellidos = $_POST['us_apellidos'] ?? '';
     $us_nombres = $_POST['us_nombres'] ?? '';
     $us_celular = $_POST['us_celular'] ?? '';
     $us_correo = $_POST['us_correo'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if (empty($us_cedula) || empty($us_apellidos) || empty($us_nombres) || empty($us_correo) || empty($password)) {
+    if (empty($us_c_dula) || empty($us_apellidos) || empty($us_nombres) || empty($us_correo) || empty($password)) {
         $error = 'Please fill in all required fields.';
     } else {
         $user = new User();
-        if ($user->create($us_cedula, $us_apellidos, $us_nombres, $us_celular, $us_correo, $password)) {
+        if ($user->create($us_c_dula, $us_apellidos, $us_nombres, $us_celular, $us_correo, $password)) {
             header('Location: users.php');
             exit;
         } else {
@@ -37,7 +37,7 @@ include '../templates/header.php';
 <form action="create_user.php" method="post">
     <div style="margin-bottom: 10px;">
         <label>Cédula:</label><br>
-        <input type="text" name="us_cedula" required>
+        <input type="text" name="us_c_dula" required>
     </div>
     <div style="margin-bottom: 10px;">
         <label>Apellidos:</label><br>

@@ -16,13 +16,13 @@ if ($userData === false) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $us_cedula = $_POST['us_cedula'] ?? '';
+    $us_c_dula = $_POST['us_c_dula'] ?? '';
     $us_apellidos = $_POST['us_apellidos'] ?? '';
     $us_nombres = $_POST['us_nombres'] ?? '';
     $us_celular = $_POST['us_celular'] ?? '';
     $us_correo = $_POST['us_correo'] ?? '';
 
-    if ($user->update($id, $us_cedula, $us_apellidos, $us_nombres, $us_celular, $us_correo)) {
+    if ($user->update($id, $us_c_dula, $us_apellidos, $us_nombres, $us_celular, $us_correo)) {
         header('Location: users.php');
         exit;
     } else {
@@ -42,7 +42,7 @@ include '../templates/header.php';
 <form action="edit_user.php?id=<?php echo $id; ?>" method="post">
     <div style="margin-bottom: 10px;">
         <label>Cédula:</label><br>
-        <input type="text" name="us_cedula" value="<?php echo htmlspecialchars($userData['us_cedula']); ?>" required>
+        <input type="text" name="us_c_dula" value="<?php echo htmlspecialchars($userData['us_c_dula']); ?>" required>
     </div>
     <div style="margin-bottom: 10px;">
         <label>Apellidos:</label><br>
