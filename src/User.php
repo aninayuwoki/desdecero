@@ -1,5 +1,7 @@
 <?php
 
+echo "DEBUG: Running User.php version 2.0";
+
 require_once 'Database.php';
 
 class User {
@@ -10,16 +12,16 @@ class User {
     }
 
     // Create a new user
-    public function create($us_c_dula, $us_apellidos, $us_nombres, $us_celular, $us_correo, $password) {
+    public function create($us_c_dula, $us_apellido, $us_nombre, $us_celular, $us_correo, $password) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO usuario (us_c_dula, us_apellidos, us_nombres, us_celular, us_correo, password) VALUES (:us_c_dula, :us_apellidos, :us_nombres, :us_celular, :us_correo, :password)";
+        $sql = "INSERT INTO usuario (us_c_dula, us_apellido, us_nombre, us_celular, us_correo, password) VALUES (:us_c_dula, :us_apellido, :us_nombre, :us_celular, :us_correo, :password)";
 
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':us_c_dula', $us_c_dula);
-            $stmt->bindParam(':us_apellidos', $us_apellidos);
-            $stmt->bindParam(':us_nombres', $us_nombres);
+            $stmt->bindParam(':us_apellido', $us_apellido);
+            $stmt->bindParam(':us_nombre', $us_nombre);
             $stmt->bindParam(':us_celular', $us_celular);
             $stmt->bindParam(':us_correo', $us_correo);
             $stmt->bindParam(':password', $hashedPassword);
@@ -32,14 +34,14 @@ class User {
 
     // Read all users
     public function readAll() {
-        $sql = "SELECT us_id, us_c_dula, us_apellidos, us_nombres, us_celular, us_correo FROM usuario";
+        $sql = "SELECT us_id, us_c_dula, us_apellido, us_nombre, us_celular, us_correo FROM usuario";
         $stmt = $this->db->query($sql);
         return $stmt->fetchAll();
     }
 
     // Find a user by ID
     public function findById($id) {
-        $sql = "SELECT us_id, us_c_dula, us_apellidos, us_nombres, us_celular, us_correo FROM usuario WHERE us_id = :id";
+        $sql = "SELECT us_id, us_c_dula, us_apellido, us_nombre, us_celular, us_correo FROM usuario WHERE us_id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -47,15 +49,15 @@ class User {
     }
 
     // Update a user
-    public function update($id, $us_c_dula, $us_apellidos, $us_nombres, $us_celular, $us_correo) {
-        $sql = "UPDATE usuario SET us_c_dula = :us_c_dula, us_apellidos = :us_apellidos, us_nombres = :us_nombres, us_celular = :us_celular, us_correo = :us_correo WHERE us_id = :id";
+    public function update($id, $us_c_dula, $us_apellido, $us_nombre, $us_celular, $us_correo) {
+        $sql = "UPDATE usuario SET us_c_dula = :us_c_dula, us_apellido = :us_apellido, us_nombre = :us_nombre, us_celular = :us_celular, us_correo = :us_correo WHERE us_id = :id";
 
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':us_c_dula', $us_c_dula);
-            $stmt->bindParam(':us_apellidos', $us_apellidos);
-            $stmt->bindParam(':us_nombres', $us_nombres);
+            $stmt->bindParam(':us_apellido', $us_apellido);
+            $stmt->bindParam(':us_nombre', $us_nombre);
             $stmt->bindParam(':us_celular', $us_celular);
             $stmt->bindParam(':us_correo', $us_correo);
             return $stmt->execute();
